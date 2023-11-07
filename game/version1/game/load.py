@@ -11,7 +11,7 @@ def asteroids(num_asteroids: int, player_position: tuple) -> list:
     """ Creates asteroids away from the player and returns a list of their positions. """
     asteroid_list = []
 
-    for x in range(num_asteroids):
+    for _ in range(num_asteroids):
         asteroid_x, asteroid_y, _ = player_position
 
         # If distance is within 100 pixels, respawn random position
