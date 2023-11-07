@@ -1,8 +1,8 @@
 """
     Main asteroid file used to launch the game. Contains main game loop.
 """
-from game import resources, load
 import pyglet
+from game import resources, load
 
 game_window = pyglet.window.Window(800, 600)
 
@@ -29,7 +29,7 @@ def on_draw():
     # Draws asteroids
     for asteroid in asteroids:
         asteroid.draw()
-    
+
 
 if __name__ == '__main__':
     pyglet.app.run()

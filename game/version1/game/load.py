@@ -1,9 +1,9 @@
 """
     Used to load asteroids in random positions away from the player.
 """
-import pyglet
 import random
 import math
+import pyglet
 from . import resources
 
 
