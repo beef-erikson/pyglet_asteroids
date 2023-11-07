@@ -1,3 +1,6 @@
+"""
+    Main asteroid file used to launch the game. Contains main game loop.
+"""
 from game import resources, load
 import pyglet
 
@@ -13,6 +16,7 @@ level_label = pyglet.text.Label(text='My Amazing Game', x=game_window.width//2,
 
 @game_window.event
 def on_draw():
+    """ Draws everything to screen. """
     game_window.clear()
 
     # Draws labels
