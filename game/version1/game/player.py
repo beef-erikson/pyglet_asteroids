@@ -10,10 +10,10 @@ class Player(physical_object.PhysicalObject):
     """ Player class that responds to input. """
     def __init__(self, *args, **kwargs):
         """ Initializes thrust, rotate speed, and key state. """
-        super(Player, self).__init__(img=resources.player_image, *args, **kwargs)
+        super().__init__(img=resources.player_image, *args, **kwargs)
         self.thrust = 300.0
         self.rotate_speed = 200.0
-        self.keys = dict(left=False, right=False, up=False)
+        self.keys = {'left': False, 'right': False, 'up': False}
 
     def on_key_press(self, symbol, _):
         """ Key has been pressed, sets flag True if movement control. """
@@ -35,7 +35,7 @@ class Player(physical_object.PhysicalObject):
 
     def update(self, dt):
         """ Updates player position """
-        super(Player, self).update(dt)
+        super().update(dt)
 
         # Rotation
         if self.keys['left']:

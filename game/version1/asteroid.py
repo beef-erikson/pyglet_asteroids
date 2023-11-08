@@ -2,7 +2,7 @@
     Main asteroid file used to launch the game. Contains main game loop.
 """
 import pyglet
-from game import resources, load, player
+from game import load, player
 
 # Window setup
 game_window = pyglet.window.Window(800, 600)
