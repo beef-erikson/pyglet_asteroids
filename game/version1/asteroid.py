@@ -15,6 +15,9 @@ player_ship = pyglet.sprite.Sprite(img=resources.player_image, x=400, y=300, bat
 asteroids = load.asteroids(3, player_ship.position, batch=main_batch)
 player_lives = load.player_lives(3, main_batch)
 
+# Grab all objects into a list
+game_objects = [player_ship] + asteroids
+
 # Text labels
 score_label = pyglet.text.Label(text='Score: 0',
                                 x=10, y=game_window.height - 20, batch=main_batch)
@@ -31,5 +34,12 @@ def on_draw():
     main_batch.draw()
 
 
+def update(dt):
+    """ Updates the position of the game objects. """
+    for obj in game_objects:
+        obj.update(dt)
+
+
 if __name__ == '__main__':
+    pyglet.clock.schedule_interval(update, 1/120.0)
     pyglet.app.run()

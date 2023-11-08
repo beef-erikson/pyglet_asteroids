@@ -10,7 +10,7 @@ class PhysicalObject(pyglet.sprite.Sprite):
 
         self.velocity_x, self.velocity_y = 0.0, 0.0
 
-    def update_position(self, dt):
+    def update(self, dt):
         """ Updates x and y position of object """
         self.x += self.velocity_x * dt
         self.y += self.velocity_y * dt
