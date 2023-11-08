@@ -45,6 +45,7 @@ def player_lives(num_icons: int, batch=None) -> list:
         new_sprite = pyglet.sprite.Sprite(img=resources.player_image,
                                           x=785-i*30, y=585, batch=batch)
         new_sprite.scale = 0.5
+        new_sprite.rotation = 270
         lives_list.append(new_sprite)
 
     return lives_list
