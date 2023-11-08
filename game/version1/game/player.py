@@ -7,10 +7,10 @@ from . import physical_object, resources
 
 
 class Player(physical_object.PhysicalObject):
-    """ Player class. """
+    """ Player class that responds to input. """
     def __init__(self, *args, **kwargs):
         """ Initializes thrust, rotate speed, and key state. """
-        super().__init__(img=resources.player_image, *args, **kwargs)
+        super(Player, self).__init__(img=resources.player_image, *args, **kwargs)
         self.thrust = 300.0
         self.rotate_speed = 200.0
         self.keys = dict(left=False, right=False, up=False)
@@ -38,9 +38,9 @@ class Player(physical_object.PhysicalObject):
         super(Player, self).update(dt)
 
         # Rotation
-        if self.key['left']:
+        if self.keys['left']:
             self.rotation -= self.rotate_speed * dt
-        if self.key['right']:
+        if self.keys['right']:
             self.rotation += self.rotate_speed * dt
 
         # Thrust forward
