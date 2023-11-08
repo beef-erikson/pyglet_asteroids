@@ -33,7 +33,7 @@ class Player(physical_object.PhysicalObject):
         elif symbol == key.LEFT:
             self.keys['left'] = False
 
-    def update(self, dt):
+    def update(self, dt, **kwargs):
         """ Updates player position """
         super().update(dt)
 
