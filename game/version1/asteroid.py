@@ -13,6 +13,7 @@ main_batch = pyglet.graphics.Batch()
 # Load sprites
 player_ship = pyglet.sprite.Sprite(img=resources.player_image, x=400, y=300, batch=main_batch)
 asteroids = load.asteroids(3, player_ship.position, batch=main_batch)
+player_lives = load.player_lives(3, main_batch)
 
 # Text labels
 score_label = pyglet.text.Label(text='Score: 0',
