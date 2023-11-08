@@ -4,8 +4,7 @@
 import random
 import math
 import pyglet
-from . import resources
-from .physical_object import PhysicalObject
+from . import resources, physical_object
 
 
 def asteroids(num_asteroids: int, player_position: tuple, batch=None) -> list:
@@ -21,8 +20,8 @@ def asteroids(num_asteroids: int, player_position: tuple, batch=None) -> list:
             asteroid_y = random.randint(0, 600)
 
         # Creates asteroids and sets a random rotation, velocity
-        new_asteroid = PhysicalObject(img=resources.asteroid_image,
-                                      x=asteroid_x, y=asteroid_y, batch=batch)
+        new_asteroid = physical_object.PhysicalObject(
+            img=resources.asteroid_image, x=asteroid_x, y=asteroid_y, batch=batch)
         new_asteroid.rotation = random.randint(0, 360)
         new_asteroid.velocity_x = random.random()*40
         new_asteroid.velocity_y = random.random()*40
