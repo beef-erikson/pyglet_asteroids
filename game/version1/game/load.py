@@ -7,7 +7,7 @@ import pyglet
 from . import resources
 
 
-def asteroids(num_asteroids: int, player_position: tuple) -> list:
+def asteroids(num_asteroids: int, player_position: tuple, batch=None) -> list:
     """ Creates asteroids away from the player and returns a list of their positions. """
     asteroid_list = []
 
@@ -20,8 +20,8 @@ def asteroids(num_asteroids: int, player_position: tuple) -> list:
             asteroid_y = random.randint(0, 600)
 
         # Creates asteroids and sets a random rotation
-        new_asteroid = pyglet.sprite.Sprite(
-            img=resources.asteroid_image, x=asteroid_x, y=asteroid_y)
+        new_asteroid = pyglet.sprite.Sprite(img=resources.asteroid_image,
+                                            x=asteroid_x, y=asteroid_y, batch=batch)
         new_asteroid.rotation = random.randint(0, 360)
 
         asteroid_list.append(new_asteroid)
