@@ -25,7 +25,7 @@ player_lives = load.player_lives(3, main_batch)
 game_objects = [player_ship] + asteroids
 
 # Tell the window the player object responds to events.
-game_window.push_handlers(player_ship)
+game_window.push_handlers(player_ship.key_handler)
 
 
 @game_window.event
