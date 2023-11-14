@@ -45,3 +45,8 @@ class Player(physical_object.PhysicalObject):
             self.engine_sprite.visible = True
         else:
             self.engine_sprite.visible = False
+
+    def delete(self):
+        """ Cleans up resources and player death. """
+        self.engine_sprite.delete()
+        super(Player, self).delete()
