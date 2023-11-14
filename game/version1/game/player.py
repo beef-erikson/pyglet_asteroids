@@ -49,4 +49,4 @@ class Player(physical_object.PhysicalObject):
     def delete(self):
         """ Cleans up resources and player death. """
         self.engine_sprite.delete()
-        super(Player, self).delete()
+        super().delete()
