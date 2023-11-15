@@ -39,10 +39,6 @@ def on_draw():
 
 def update(dt):
     """ Updates the position of the game objects and handles collisions. """
-    # Update positions of game_objects
-    for obj in game_objects:
-        obj.update(dt)
-
     # Collision checking
     # pylint: disable=consider-using-enumerate
     for i in range(len(game_objects)):
@@ -55,10 +51,20 @@ def update(dt):
                     obj_1.handle_collision()
                     obj_2.handle_collision()
 
-    # Removes dead objects
+    # Update positions of game_objects and adds any new objects.
+    to_add = []
+    for obj in game_objects:
+        obj.update(dt)
+        to_add.extend(obj.new_objects)
+        obj.new_objects = []
+
+    # Removes dead objects.
     for to_remove in [obj for obj in game_objects if obj.dead]:
         to_remove.delete()
         game_objects.remove(to_remove)
+
+    # Adds back into game objects.
+    game_objects.extend(to_add)
 
 
 if __name__ == '__main__':

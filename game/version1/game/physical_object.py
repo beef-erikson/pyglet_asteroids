@@ -10,6 +10,7 @@ class PhysicalObject(pyglet.sprite.Sprite):
         super().__init__(*args, **kwargs)
         self.velocity_x, self.velocity_y = 0.0, 0.0
         self.dead = False
+        self.new_objects = []
 
     # pylint: disable=arguments-differ
     def update(self, dt) -> None:
