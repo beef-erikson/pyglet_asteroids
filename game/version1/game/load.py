@@ -2,9 +2,9 @@
     Used to load asteroids in random positions away from the player.
 """
 import random
-import math
 import pyglet
 from . import resources, physical_object
+from .util import distance
 
 
 def asteroids(num_asteroids: int, player_position: tuple, batch=None) -> list:
@@ -29,11 +29,6 @@ def asteroids(num_asteroids: int, player_position: tuple, batch=None) -> list:
         asteroid_list.append(new_asteroid)
 
     return asteroid_list
-
-
-def distance(point_1=(0, 0), point_2=(0, 0)) -> float:
-    """ Returns the distance between two points """
-    return math.sqrt((point_1[0] - point_2[0]) ** 2 + (point_1[1] - point_2[1]) ** 2)
 
 
 def player_lives(num_icons: int, batch=None) -> list:

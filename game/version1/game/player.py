@@ -20,7 +20,7 @@ class Player(physical_object.PhysicalObject):
         self.engine_sprite.visible = False  # We'll be setting this to true when firing the engine.
 
     def update(self, dt):
-        """ Updates player position """
+        """ Updates player position, thrust sprite """
         super().update(dt)
 
         # Rotation
