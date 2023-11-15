@@ -44,6 +44,7 @@ def update(dt):
         obj.update(dt)
 
     # Collision checking
+    # pylint: disable=consider-using-enumerate
     for i in range(len(game_objects)):
         for j in range(i+1, len(game_objects)):
             obj_1 = game_objects[i]

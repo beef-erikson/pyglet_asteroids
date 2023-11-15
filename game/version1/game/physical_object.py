@@ -2,6 +2,7 @@
 import pyglet
 from . import util
 
+
 class PhysicalObject(pyglet.sprite.Sprite):
     """ Sprite object for movement, etc. """
     def __init__(self, *args, **kwargs):
