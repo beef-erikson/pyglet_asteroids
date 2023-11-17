@@ -49,7 +49,7 @@ class Player(physical_object.PhysicalObject):
 
     def on_key_press(self, symbol, modifiers):
         """ Fires bullet when pressing space bar. """
-        if symbol == key.S:
+        if symbol == key.SPACE:
             self.fire()
 
     def fire(self):
