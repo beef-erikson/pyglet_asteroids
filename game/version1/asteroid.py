@@ -53,6 +53,7 @@ def update(dt):
 
     # Update positions of game_objects and adds any new objects.
     to_add = []
+
     for obj in game_objects:
         obj.update(dt)
         to_add.extend(obj.new_objects)
@@ -60,6 +61,8 @@ def update(dt):
 
     # Removes dead objects.
     for to_remove in [obj for obj in game_objects if obj.dead]:
+        # If dying object spawned new objects, add those to list
+        to_add.extend(obj.new_objects)
         to_remove.delete()
         game_objects.remove(to_remove)
 

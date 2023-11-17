@@ -5,7 +5,7 @@ import math
 
 import pyglet.sprite
 from pyglet.window import key
-from . import physical_object, resources
+from . import physical_object, resources, bullet
 
 
 class Player(physical_object.PhysicalObject):
@@ -17,7 +17,8 @@ class Player(physical_object.PhysicalObject):
         self.rotate_speed = 200.0
         self.key_handler = key.KeyStateHandler()
         self.engine_sprite = pyglet.sprite.Sprite(img=resources.engine_image, *args, **kwargs)
-        self.engine_sprite.visible = False  # We'll be setting this to true when firing the engine.
+        self.engine_sprite.visible = False
+        self.bullet_speed = 700.0
 
     def update(self, dt):
         """ Updates player position, thrust sprite """
@@ -45,6 +46,31 @@ class Player(physical_object.PhysicalObject):
             self.engine_sprite.visible = True
         else:
             self.engine_sprite.visible = False
+
+    def on_key_press(self, symbol, modifiers):
+        """ Fires bullet when pressing space bar. """
+        if symbol == key.S:
+            self.fire()
+
+    def fire(self):
+        """ Fires the bullet from the front of the ship. """
+        angle_radians = -math.radians(self.rotation)
+
+        # Bullet position and spawning.
+        ship_radius = self.image.width / 2
+        bullet_x = self.x + math.cos(angle_radians) * ship_radius
+        bullet_y = self.y + math.sin(angle_radians) * ship_radius
+        new_bullet = bullet.Bullet(bullet_x, bullet_y, batch=self.batch)
+
+        # Bullet velocity.
+        bullet_vx = self.velocity_x + math.cos(angle_radians) * self.bullet_speed
+        bullet_vy = self.velocity_y * math.cos(angle_radians) * self.bullet_speed
+
+        new_bullet.velocity_x = bullet_vx
+        new_bullet.velocity_y = bullet_vy
+
+        # Add bullet to list for spawning in main loop.
+        self.new_objects.append(new_bullet)
 
     def delete(self):
         """ Cleans up resources and player death. """
