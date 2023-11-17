@@ -2,7 +2,6 @@
     Player class - handles controls, thrust and so on.
 """
 import math
-
 import pyglet.sprite
 from pyglet.window import key
 from . import physical_object, resources, bullet
@@ -47,9 +46,8 @@ class Player(physical_object.PhysicalObject):
         else:
             self.engine_sprite.visible = False
 
-    def on_key_press(self, symbol, modifiers):
-        """ Fires bullet when pressing space bar. """
-        if symbol == key.SPACE:
+        # Fire bullets.
+        if self.key_handler[key.SPACE]:
             self.fire()
 
     def fire(self):
